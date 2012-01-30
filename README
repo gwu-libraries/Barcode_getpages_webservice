@@ -1,0 +1,1 @@
+A SOAP based web service that returns the total number of pages from KILTS database given a barcode. Uses Hibernate ORM to get data from the database. 

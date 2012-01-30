@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://localhost\SQLEXPRESS:3595;databaseName=KILTS</property>
+    <property name="hibernate.connection.username">administrator</property>
+    <property name="hibernate.connection.password">server034techs**</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="Data/CustomerOrder.hbm.xml"/>
+    <mapping resource="Data/Customer.hbm.xml"/>
+    <mapping resource="Data/BookSourceForOrder.hbm.xml"/>
+    <mapping resource="Data/BookScanner.hbm.xml"/>
+    <mapping resource="Data/FixedLocation.hbm.xml"/>
+    <mapping resource="Data/Institution.hbm.xml"/>
+    <mapping resource="Data/WorkflowStep.hbm.xml"/>
+    <mapping resource="Data/Project.hbm.xml"/>
+    <mapping resource="Data/OrderBook.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

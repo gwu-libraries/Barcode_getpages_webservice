@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2012 2:21:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="KILTS" name="Data.WorkflowStep" schema="dbo" table="WorkflowStep">
+    <id name="id" type="long">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="code" type="serializable">
+      <column name="Code" not-null="true" unique="true"/>
+    </property>
+    <property name="name" type="serializable">
+      <column name="Name"/>
+    </property>
+    <property name="emailServerName" type="serializable">
+      <column name="EmailServerName"/>
+    </property>
+    <property name="fromEmailAddress" type="serializable">
+      <column name="From_EmailAddress"/>
+    </property>
+    <property name="toEmailAddress" type="serializable">
+      <column name="To_EmailAddress"/>
+    </property>
+    <property name="defaultEmailSubject" type="serializable">
+      <column name="Default_EmailSubject"/>
+    </property>
+    <property name="defaultEmailBody" type="serializable">
+      <column name="Default_EmailBody"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="23" name="DateCreated"/>
+    </property>
+    <set inverse="true" name="orderBooks">
+      <key>
+        <column name="Current_WorkflowStep_Code" not-null="true"/>
+      </key>
+      <one-to-many class="Data.OrderBook"/>
+    </set>
+  </class>
+</hibernate-mapping>

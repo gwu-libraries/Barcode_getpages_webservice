@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2012 2:21:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="KILTS" name="Data.BookScanner" schema="dbo" table="BookScanner">
+    <id name="id" type="long">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Data.FixedLocation" fetch="select" name="fixedLocation">
+      <column name="FixedLocation_ID"/>
+    </many-to-one>
+    <property name="bookScannerCode" type="serializable">
+      <column name="BookScanner_Code" not-null="true" unique="true"/>
+    </property>
+    <property name="name" type="serializable">
+      <column name="Name"/>
+    </property>
+    <property name="barcode" type="serializable">
+      <column name="Barcode"/>
+    </property>
+    <property name="moveInDate" type="timestamp">
+      <column length="23" name="MoveIn_Date"/>
+    </property>
+    <property name="prevFixedLocationId" type="java.lang.Long">
+      <column name="Prev_FixedLocation_ID"/>
+    </property>
+    <property name="prevMoveInDate" type="timestamp">
+      <column length="23" name="Prev_MoveIn_Date"/>
+    </property>
+    <property name="createdPersonId" type="java.lang.Long">
+      <column name="Created_Person_ID"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="23" name="DateCreated" not-null="true"/>
+    </property>
+    <set inverse="true" name="orderBooks">
+      <key>
+        <column name="BookScanner_Code"/>
+      </key>
+      <one-to-many class="Data.OrderBook"/>
+    </set>
+  </class>
+</hibernate-mapping>

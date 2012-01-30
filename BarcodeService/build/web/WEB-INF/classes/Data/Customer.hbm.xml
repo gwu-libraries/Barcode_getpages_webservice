@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2012 2:21:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="KILTS" name="Data.Customer" schema="dbo" table="Customer">
+    <id name="id" type="long">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Data.Institution" fetch="select" name="institution">
+      <column name="Institution_ID" not-null="true"/>
+    </many-to-one>
+    <property name="bookPlate" type="serializable">
+      <column name="BookPlate"/>
+    </property>
+    <property name="folderName" type="serializable">
+      <column name="FolderName"/>
+    </property>
+    <property name="statusUpdateType" type="serializable">
+      <column name="StatusUpdateType"/>
+    </property>
+    <property name="activeStatus" type="boolean">
+      <column name="ActiveStatus" not-null="true"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="23" name="DateCreated" not-null="true"/>
+    </property>
+    <property name="customerFolderName" type="serializable">
+      <column name="CustomerFolderName" not-null="true"/>
+    </property>
+    <set inverse="true" name="customerOrders">
+      <key>
+        <column name="Customer_ID" not-null="true"/>
+      </key>
+      <one-to-many class="Data.CustomerOrder"/>
+    </set>
+  </class>
+</hibernate-mapping>

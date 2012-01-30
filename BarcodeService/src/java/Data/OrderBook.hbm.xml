@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 6, 2012 2:21:37 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="KILTS" name="Data.OrderBook" schema="dbo" table="OrderBook">
+    <id name="id" type="long">
+      <column name="ID"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="Data.BookSourceForOrder" fetch="select" name="bookSourceForOrder">
+      <column name="BookSourceForOrder_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="Data.Project" fetch="select" name="project">
+      <column name="Project_ID" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="Data.BookScanner" fetch="select" name="bookScanner">
+      <column name="BookScanner_Code"/>
+    </many-to-one>
+    <many-to-one class="Data.OrderBook" fetch="select" name="orderBook">
+      <column name="ParentOrderBook_ID"/>
+    </many-to-one>
+    <many-to-one class="Data.WorkflowStep" fetch="select" name="workflowStep">
+      <column name="Current_WorkflowStep_Code" not-null="true"/>
+    </many-to-one>
+    <property name="jobId" type="java.lang.Long">
+      <column name="Job_ID"/>
+    </property>
+    <property name="jobAssignDate" type="timestamp">
+      <column length="23" name="Job_AssignDate"/>
+    </property>
+    <property name="isbn13" type="serializable">
+      <column name="ISBN_13"/>
+    </property>
+    <property name="isbn10" type="serializable">
+      <column name="ISBN_10"/>
+    </property>
+    <property name="customerBarcode" type="serializable">
+      <column name="Customer_Barcode"/>
+    </property>
+    <property name="kirtasBarcode" type="serializable">
+      <column name="Kirtas_Barcode"/>
+    </property>
+    <property name="publisher" type="serializable">
+      <column name="Publisher"/>
+    </property>
+    <property name="title" type="serializable">
+      <column name="Title"/>
+    </property>
+    <property name="author" type="serializable">
+      <column name="Author"/>
+    </property>
+    <property name="numberOfPages" type="java.lang.Short">
+      <column name="NumberOfPages"/>
+    </property>
+    <property name="numberOfColorPages" type="java.lang.Short">
+      <column name="NumberOfColorPages"/>
+    </property>
+    <property name="numberOfGrayPages" type="java.lang.Short">
+      <column name="NumberOfGrayPages"/>
+    </property>
+    <property name="numberOfBwpages" type="java.lang.Short">
+      <column name="NumberOfBWPages"/>
+    </property>
+    <property name="mobileContainerId" type="java.lang.Long">
+      <column name="MobileContainer_ID"/>
+    </property>
+    <property name="fixedLocationId" type="java.lang.Long">
+      <column name="FixedLocation_ID"/>
+    </property>
+    <property name="moveInDate" type="timestamp">
+      <column length="23" name="MoveIn_Date"/>
+    </property>
+    <property name="prevMobileContainerId" type="java.lang.Long">
+      <column name="Prev_MobileContainer_ID"/>
+    </property>
+    <property name="prevFixedLocationId" type="java.lang.Long">
+      <column name="Prev_FixedLocation_ID"/>
+    </property>
+    <property name="prevMoveInDate" type="timestamp">
+      <column length="23" name="Prev_MoveIn_Date"/>
+    </property>
+    <property name="isBookCurrentlyLockedDateTime" type="timestamp">
+      <column length="23" name="IsBookCurrentlyLocked_DateTime"/>
+    </property>
+    <property name="currentlyOpenPersonId" type="java.lang.Long">
+      <column name="CurrentlyOpen_Person_ID"/>
+    </property>
+    <property name="isOcr" type="boolean">
+      <column name="IsOCR" not-null="true"/>
+    </property>
+    <property name="isWatermark" type="boolean">
+      <column name="IsWatermark" not-null="true"/>
+    </property>
+    <property name="duplicateOrderBookId" type="java.lang.Long">
+      <column name="Duplicate_OrderBook_ID"/>
+    </property>
+    <property name="customerBookId" type="serializable">
+      <column name="Customer_BookId"/>
+    </property>
+    <property name="customerPublisherNum" type="serializable">
+      <column name="Customer_PublisherNum"/>
+    </property>
+    <property name="customerStatusId" type="serializable">
+      <column name="Customer_StatusId"/>
+    </property>
+    <property name="customerTargetStatusId" type="serializable">
+      <column name="Customer_TargetStatusId"/>
+    </property>
+    <property name="customerIsException" type="java.lang.Boolean">
+      <column name="Customer_IsException"/>
+    </property>
+    <property name="customerStatusToReport" type="serializable">
+      <column name="Customer_StatusToReport"/>
+    </property>
+    <property name="customerStatusHasToBeReported" type="java.lang.Boolean">
+      <column name="Customer_StatusHasToBeReported"/>
+    </property>
+    <property name="customerStatusReportedDateTime" type="timestamp">
+      <column length="23" name="Customer_StatusReported_DateTime"/>
+    </property>
+    <property name="customerExceptionType" type="serializable">
+      <column name="Customer_ExceptionType"/>
+    </property>
+    <property name="customerLastModifiedDateTime" type="timestamp">
+      <column length="23" name="Customer_LastModified_DateTime"/>
+    </property>
+    <property name="modifiedDateAndTime" type="timestamp">
+      <column length="23" name="Modified_DateAndTime"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="23" name="DateCreated" not-null="true"/>
+    </property>
+    <property name="isIsbninMsmanifest" type="java.lang.Boolean">
+      <column name="IsISBNInMSManifest"/>
+    </property>
+    <property name="isDblocationValid" type="java.lang.Boolean">
+      <column name="IsDBLocationValid"/>
+    </property>
+    <property name="doesBookManifestExist" type="java.lang.Boolean">
+      <column name="DoesBookManifestExist"/>
+    </property>
+    <property name="isBookManifestNameSameAsIsbn" type="java.lang.Boolean">
+      <column name="IsBookManifestNameSameAsISBN"/>
+    </property>
+    <property name="isDbjpgcountDifferent" type="java.lang.Boolean">
+      <column name="IsDBJPGCountDifferent"/>
+    </property>
+    <property name="wasAnyPathFound" type="java.lang.Boolean">
+      <column name="WasAnyPathFound"/>
+    </property>
+    <property name="operatorNotes" type="serializable">
+      <column name="OperatorNotes"/>
+    </property>
+    <property name="isFoldout" type="java.lang.Boolean">
+      <column name="IsFoldout"/>
+    </property>
+    <property name="isFoldoutScanned" type="java.lang.Boolean">
+      <column name="IsFoldoutScanned"/>
+    </property>
+    <property name="numOfFoldoutImages" type="java.lang.Short">
+      <column name="NumOfFoldoutImages"/>
+    </property>
+    <property name="locationCode" type="serializable">
+      <column name="LocationCode"/>
+    </property>
+    <property name="callNumber" type="serializable">
+      <column name="CallNumber"/>
+    </property>
+    <property name="isMetsException" type="java.lang.Boolean">
+      <column name="IsMetsException"/>
+    </property>
+    <property name="bookFolderName" type="serializable">
+      <column name="Book_Folder_Name"/>
+    </property>
+    <property name="isMultiVersionBook" type="java.lang.Boolean">
+      <column name="Is_MultiVersionBook"/>
+    </property>
+    <property name="isQaStepSkipped" type="java.lang.Boolean">
+      <column name="Is_QA_Step_Skipped"/>
+    </property>
+    <property name="imageType" type="serializable">
+      <column name="Image_Type"/>
+    </property>
+    <set inverse="true" name="orderBooks">
+      <key>
+        <column name="ParentOrderBook_ID"/>
+      </key>
+      <one-to-many class="Data.OrderBook"/>
+    </set>
+  </class>
+</hibernate-mapping>

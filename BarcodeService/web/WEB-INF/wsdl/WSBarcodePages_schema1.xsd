@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://WSBarcode/" xmlns:tns="http://WSBarcode/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="getPages" nillable="true" type="tns:getPages"/>
+
+  <xs:element name="getPagesResponse" nillable="true" type="tns:getPagesResponse"/>
+
+  <xs:complexType name="getPages">
+    <xs:sequence>
+      <xs:element name="barcode" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getPagesResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:short" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
